@@ -5,8 +5,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{974A41DE-51C7-45E2-97C2-0E40219A2B45}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>xware.ACME</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>XWare.ACME</RootNamespace>
     <AssemblyName>Let%27s Encrypt with DNSPod</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +31,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ACMESharp, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -88,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Account.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\Domain.cs" />
     <Compile Include="Dnspod\DnspodApi.cs" />
     <Compile Include="Dnspod\DnspodResult.cs" />
     <Compile Include="Dnspod\Domain\DnspodDomainListResult.cs" />
@@ -95,27 +103,46 @@
     <Compile Include="Dnspod\Record\DnspodRecordCreateResult.cs" />
     <Compile Include="Dnspod\Record\DnspodRecordListResult.cs" />
     <Compile Include="Dnspod\Record\RecordApi.cs" />
+    <Compile Include="Extensions\ACMEHelper.cs" />
     <Compile Include="Extensions\HttpResponseMessage.Extension.cs" />
     <Compile Include="Extensions\NameValueCollection.Extension.cs" />
-    <Compile Include="frmRegister.cs">
+    <Compile Include="UI\frmAddDomains.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegister.Designer.cs">
+    <Compile Include="UI\frmAddDomains.Designer.cs">
+      <DependentUpon>frmAddDomains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="UI\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="UI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmRegister.resx">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\frmAddDomains.resx">
+      <DependentUpon>frmAddDomains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="UI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -127,6 +154,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Icon.ico" />
     <Content Include="x64\libeay32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

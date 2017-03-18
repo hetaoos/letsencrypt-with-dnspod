@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xware.ACME.Dnspod.Record
+namespace XWare.ACME.Dnspod.Record
 {
     public class RecordApi
     {

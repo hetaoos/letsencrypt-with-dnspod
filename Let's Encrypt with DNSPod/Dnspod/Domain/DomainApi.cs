@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xware.ACME.Dnspod.Domain
+namespace XWare.ACME.Dnspod.Domain
 {
     public class DomainApi
     {

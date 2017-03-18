@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xware.ACME.Dnspod.Domain
+namespace XWare.ACME.Dnspod.Domain
 {
     public class DnspodDomainListResult : DnspodResult
     {

@@ -1,5 +1,5 @@
-﻿using xware.ACME.Dnspod.Domain;
-using xware.ACME.Dnspod.Record;
+﻿using XWare.ACME.Dnspod.Domain;
+using XWare.ACME.Dnspod.Record;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xware.ACME.Dnspod
+namespace XWare.ACME.Dnspod
 {
     public class DnspodApi
     {

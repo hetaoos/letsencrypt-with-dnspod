@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xware.ACME.Data
+namespace XWare.ACME.Data
 {
     /// <summary>
     /// 账户
@@ -102,5 +102,10 @@ namespace xware.ACME.Data
             }
         }
 
+
+        public override string ToString()
+        {
+            return $"{email} ({uri})";
+        }
     }
 }
