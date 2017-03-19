@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace XWare.ACME.Dnspod
 {
@@ -21,6 +22,8 @@ namespace XWare.ACME.Dnspod
         public DomainApi Domain { get; private set; }
 
         public RecordApi Record { get; private set; }
+
+        public static readonly Regex TokenRegex = new Regex(@"^[\d]+,[0-9a-f]{32}$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         public DnspodApi(string token = null)
         {

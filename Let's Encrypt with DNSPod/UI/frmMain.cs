@@ -24,10 +24,8 @@ namespace XWare.ACME.UI
 {
     public partial class frmMain : frmBaseForm
     {
-        public RS256Signer signer;
         public AcmeClient client;
         public Account account;
-        public DnspodApi api = new DnspodApi();
         public frmMain()
         {
             InitializeComponent();
@@ -38,7 +36,6 @@ namespace XWare.ACME.UI
             var t = new frmRegister();
             if (t.ShowDialog() == DialogResult.OK)
             {
-                signer = t.signer;
                 client = t.client;
                 account = t.account;
                 btnRefresh.PerformClick();
@@ -84,7 +81,6 @@ namespace XWare.ACME.UI
                 client.Registration = account.Registration;
 
                 this.client = client;
-                this.signer = signer;
                 this.account = account;
                 log.Info("load done.");
                 labInfo.Text = account.ToString();
@@ -224,8 +220,11 @@ namespace XWare.ACME.UI
             if (this.account?.id != account.id)
             {
                 this.account = account;
-                this.signer = null;
-                this.client = null;
+                if (this.client != null)
+                {
+                    this.client.Dispose();
+                    this.client = null;
+                }
                 labInfo.Text = "Ready";
                 btnRefreshDomains.PerformClick();
             }
@@ -234,7 +233,7 @@ namespace XWare.ACME.UI
 
         private bool TryLoad(bool force = false)
         {
-            if (force == false && this.signer != null && this.client != null)
+            if (force == false && this.client != null)
                 return true;
 
             RS256Signer signer = null;
@@ -251,7 +250,6 @@ namespace XWare.ACME.UI
                 client.Registration = account.Registration;
 
                 this.client = client;
-                this.signer = signer;
                 log.Info("load done.");
                 labInfo.Text = account.ToString();
                 //

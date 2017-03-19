@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace XWare.ACME.UI
 {
-    public abstract class frmBaseForm : Form
+    public class frmBaseForm : Form
     {
         protected static ILog log;
         protected static readonly ApplicationDbContext db = ApplicationDbContext.Default;

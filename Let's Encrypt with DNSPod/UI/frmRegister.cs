@@ -18,7 +18,6 @@ namespace XWare.ACME.UI
 {
     public partial class frmRegister : frmBaseForm
     {
-        public RS256Signer signer;
         public AcmeClient client;
         public Account account;
 
@@ -42,7 +41,7 @@ namespace XWare.ACME.UI
                 await Task.FromResult(0);
                 return;
             }
-            
+
             var c = db.Accounts.Find(o => o.email == txtEmail.Text && o.uri == cmbUrl.Text)
                  .Count();
             if (c > 0)
@@ -50,11 +49,10 @@ namespace XWare.ACME.UI
                 log.Warn($"该账号已存在。");
                 return;
             }
-
+            RS256Signer signer = null;
             try
             {
                 signer = new RS256Signer();
-
                 signer.Init();
 
                 client = new AcmeClient(new Uri(cmbUrl.Text), new AcmeServerDirectory(), signer);
@@ -88,9 +86,10 @@ namespace XWare.ACME.UI
                 };
                 if (string.IsNullOrWhiteSpace(txtTokens.Text) == false)
                 {
-                    account.dnspod_tokens = txtTokens.Text.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries)
-                            .Select(o => o.Trim())
-                            .Distinct().ToList();
+                    var m = txtTokens.Text.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries)
+                                .Select(o => o.Trim())
+                                .Distinct().ToList();
+                    account.dnspod_tokens = m.Where(o => Dnspod.DnspodApi.TokenRegex.IsMatch(o)).ToList();
                 }
                 db.Accounts.Insert(account);
                 Working(false);

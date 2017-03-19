@@ -39,11 +39,13 @@ namespace XWare.ACME.UI
             Working(true);
             if (string.IsNullOrWhiteSpace(txtTokens.Text) == false)
             {
-                account.dnspod_tokens = txtTokens.Text.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries)
-                        .Select(o => o.Trim())
-                        .Distinct().ToList();
+                var m = txtTokens.Text.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries)
+                             .Select(o => o.Trim())
+                             .Distinct().ToList();
+                account.dnspod_tokens = m.Where(o => Dnspod.DnspodApi.TokenRegex.IsMatch(o)).ToList();
             }
-            account.dnspod_tokens = null;
+            else
+                account.dnspod_tokens = null;
             db.Accounts.Update(account);
             Working(false);
             log.Info("save done.");
