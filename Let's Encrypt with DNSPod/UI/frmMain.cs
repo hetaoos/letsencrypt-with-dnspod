@@ -43,7 +43,7 @@ namespace XWare.ACME.UI
                 signer = t.signer;
                 client = t.client;
                 account = t.account;
-                refreshToolStripMenuItem.PerformClick();
+                btnRefresh.PerformClick();
                 labInfo.Text = account.ToString();
             }
         }
@@ -52,7 +52,7 @@ namespace XWare.ACME.UI
         private void frmMain_Load(object sender, EventArgs e)
         {
             Program.ShowConsole();
-            refreshToolStripMenuItem.PerformClick();
+            btnRefresh.PerformClick();
         }
 
 
@@ -143,16 +143,23 @@ namespace XWare.ACME.UI
             }
         }
 
-        private void registerToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            registerToolStripMenuItem.PerformClick();
-        }
-
         private void btnRefreshDomains_Click(object sender, EventArgs e)
         {
             if (account == null)
                 return;
-            dgvDomains.DataSource = db.Domains.Find(o => o.rid == account.id).ToList();
+
+            var ls = dgvDomains.DataSource as List<Domain>;
+            List<int> selectids = null;
+            if (ls?.Count > 0)
+            {
+                selectids = ls.Where(o => o.@checked).Select(o => o.id).ToList();
+            }
+            ls = db.Domains.Find(o => o.rid == account.id).ToList();
+            if (selectids?.Count > 0)
+                foreach (var it in ls.Where(o => selectids.Contains(o.id)))
+                    it.@checked = true;
+
+            dgvDomains.DataSource = ls;
 
             foreach (DataGridViewColumn col in dgvDomains.Columns)
             {
@@ -182,6 +189,28 @@ namespace XWare.ACME.UI
         {
             var ls = dgvDomains.DataSource as List<Domain>;
             var r = ACMEHelper.GetCertificate(client, account, ls, @"Z:\");
+        }
+
+        private void btnSelectAllDomains_Click(object sender, EventArgs e)
+        {
+            var ls = dgvDomains.DataSource as List<Domain>;
+            if (ls?.Count > 0)
+            {
+                foreach (var it in ls)
+                    it.@checked = true;
+                dgvDomains.Refresh();
+            }
+        }
+
+        private void btnReverseSelectDomain_Click(object sender, EventArgs e)
+        {
+            var ls = dgvDomains.DataSource as List<Domain>;
+            if (ls?.Count > 0)
+            {
+                foreach (var it in ls)
+                    it.@checked = !it.@checked;
+                dgvDomains.Refresh();
+            }
         }
     }
 }

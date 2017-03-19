@@ -39,11 +39,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cmbAccounts = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.registerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvDomains = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -51,6 +46,12 @@
             this.btnAddDomains = new System.Windows.Forms.ToolStripButton();
             this.btnAuthorize = new System.Windows.Forms.ToolStripButton();
             this.btnCertificate = new System.Windows.Forms.ToolStripButton();
+            this.btnLoad = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnRegister = new System.Windows.Forms.ToolStripButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSelectAllDomains = new System.Windows.Forms.ToolStripButton();
+            this.btnReverseSelectDomain = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -66,7 +67,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1012, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(1002, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -83,19 +84,19 @@
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
             this.registerToolStripMenuItem.Text = "&Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(161, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(208, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -104,9 +105,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labInfo});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 504);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 515);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1012, 29);
+            this.statusStrip1.Size = new System.Drawing.Size(1002, 29);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -122,10 +123,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.cmbAccounts,
-            this.toolStripDropDownButton1});
+            this.btnRefresh,
+            this.btnLoad,
+            this.btnRegister});
             this.toolStrip1.Location = new System.Drawing.Point(0, 32);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1012, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(1002, 32);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -140,47 +143,7 @@
             this.cmbAccounts.AutoSize = false;
             this.cmbAccounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccounts.Name = "cmbAccounts";
-            this.cmbAccounts.Size = new System.Drawing.Size(500, 32);
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadToolStripMenuItem,
-            this.refreshToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.registerToolStripMenuItem1});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(84, 29);
-            this.toolStripDropDownButton1.Text = "&Action";
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
-            this.loadToolStripMenuItem.Text = "&Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
-            // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
-            this.refreshToolStripMenuItem.Text = "&Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(161, 6);
-            // 
-            // registerToolStripMenuItem1
-            // 
-            this.registerToolStripMenuItem1.Name = "registerToolStripMenuItem1";
-            this.registerToolStripMenuItem1.Size = new System.Drawing.Size(164, 30);
-            this.registerToolStripMenuItem1.Text = "&Register";
-            this.registerToolStripMenuItem1.Click += new System.EventHandler(this.registerToolStripMenuItem1_Click);
+            this.cmbAccounts.Size = new System.Drawing.Size(550, 32);
             // 
             // dgvDomains
             // 
@@ -195,7 +158,7 @@
             this.dgvDomains.RowHeadersVisible = false;
             this.dgvDomains.RowTemplate.Height = 30;
             this.dgvDomains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDomains.Size = new System.Drawing.Size(629, 382);
+            this.dgvDomains.Size = new System.Drawing.Size(629, 393);
             this.dgvDomains.TabIndex = 8;
             // 
             // groupBox1
@@ -205,7 +168,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 64);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(635, 440);
+            this.groupBox1.Size = new System.Drawing.Size(635, 451);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Domains";
@@ -217,7 +180,9 @@
             this.btnRefreshDomains,
             this.btnAddDomains,
             this.btnAuthorize,
-            this.btnCertificate});
+            this.btnCertificate,
+            this.btnSelectAllDomains,
+            this.btnReverseSelectDomain});
             this.toolStrip2.Location = new System.Drawing.Point(3, 24);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(629, 31);
@@ -264,11 +229,72 @@
             this.btnCertificate.Text = "Certificate";
             this.btnCertificate.Click += new System.EventHandler(this.btnCertificate_Click);
             // 
+            // btnLoad
+            // 
+            this.btnLoad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnLoad.Image = ((System.Drawing.Image)(resources.GetObject("btnLoad.Image")));
+            this.btnLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(56, 29);
+            this.btnLoad.Text = "&Load";
+            this.btnLoad.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(78, 29);
+            this.btnRefresh.Text = "&Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnRegister.Image")));
+            this.btnRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(85, 29);
+            this.btnRegister.Text = "&Register";
+            this.btnRegister.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(635, 64);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(367, 451);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Certificate";
+            // 
+            // btnSelectAllDomains
+            // 
+            this.btnSelectAllDomains.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnSelectAllDomains.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectAllDomains.Image")));
+            this.btnSelectAllDomains.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSelectAllDomains.Name = "btnSelectAllDomains";
+            this.btnSelectAllDomains.Size = new System.Drawing.Size(93, 28);
+            this.btnSelectAllDomains.Text = "Select All";
+            this.btnSelectAllDomains.Click += new System.EventHandler(this.btnSelectAllDomains_Click);
+            // 
+            // btnReverseSelectDomain
+            // 
+            this.btnReverseSelectDomain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReverseSelectDomain.Image = ((System.Drawing.Image)(resources.GetObject("btnReverseSelectDomain.Image")));
+            this.btnReverseSelectDomain.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReverseSelectDomain.Name = "btnReverseSelectDomain";
+            this.btnReverseSelectDomain.Size = new System.Drawing.Size(136, 28);
+            this.btnReverseSelectDomain.Text = "Reverse Select";
+            this.btnReverseSelectDomain.Click += new System.EventHandler(this.btnReverseSelectDomain_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 533);
+            this.ClientSize = new System.Drawing.Size(1002, 544);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -306,11 +332,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox cmbAccounts;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem registerToolStripMenuItem1;
         private System.Windows.Forms.DataGridView dgvDomains;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolStrip toolStrip2;
@@ -318,6 +339,12 @@
         private System.Windows.Forms.ToolStripButton btnAddDomains;
         private System.Windows.Forms.ToolStripButton btnAuthorize;
         private System.Windows.Forms.ToolStripButton btnCertificate;
+        private System.Windows.Forms.ToolStripButton btnRegister;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.ToolStripButton btnLoad;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ToolStripButton btnSelectAllDomains;
+        private System.Windows.Forms.ToolStripButton btnReverseSelectDomain;
     }
 }
 
