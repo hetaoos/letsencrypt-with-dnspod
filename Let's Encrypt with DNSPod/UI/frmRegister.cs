@@ -16,10 +16,8 @@ using XWare.ACME.Data;
 
 namespace XWare.ACME.UI
 {
-    public partial class frmRegister : Form
+    public partial class frmRegister : frmBaseForm
     {
-        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private ApplicationDbContext db = ApplicationDbContext.Default;
         public RS256Signer signer;
         public AcmeClient client;
         public Account account;

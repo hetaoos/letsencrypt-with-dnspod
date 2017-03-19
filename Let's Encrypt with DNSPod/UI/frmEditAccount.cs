@@ -16,10 +16,8 @@ using XWare.ACME.Data;
 
 namespace XWare.ACME.UI
 {
-    public partial class frmEditAccount : Form
+    public partial class frmEditAccount : frmBaseForm
     {
-        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private ApplicationDbContext db = ApplicationDbContext.Default;
         public Account account;
 
         public frmEditAccount(Account account)

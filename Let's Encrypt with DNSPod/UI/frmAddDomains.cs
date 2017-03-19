@@ -13,11 +13,8 @@ using XWare.ACME.Data;
 
 namespace XWare.ACME.UI
 {
-    public partial class frmAddDomains : Form
+    public partial class frmAddDomains : frmBaseForm
     {
-        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private ApplicationDbContext db = ApplicationDbContext.Default;
-
         private int rid;
         public frmAddDomains(int rid)
         {

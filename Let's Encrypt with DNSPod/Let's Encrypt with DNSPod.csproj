@@ -112,6 +112,9 @@
     <Compile Include="UI\frmAddDomains.Designer.cs">
       <DependentUpon>frmAddDomains.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\frmEditAccount.cs">
       <SubType>Form</SubType>
     </Compile>

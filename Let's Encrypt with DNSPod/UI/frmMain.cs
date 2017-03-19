@@ -22,10 +22,8 @@ using XWare.ACME.Dnspod;
 
 namespace XWare.ACME.UI
 {
-    public partial class frmMain : Form
+    public partial class frmMain : frmBaseForm
     {
-        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private ApplicationDbContext db = ApplicationDbContext.Default;
         public RS256Signer signer;
         public AcmeClient client;
         public Account account;
