@@ -39,6 +39,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cmbAccounts = new System.Windows.Forms.ToolStripComboBox();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnRegister = new System.Windows.Forms.ToolStripButton();
             this.dgvDomains = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -46,11 +48,10 @@
             this.btnAddDomains = new System.Windows.Forms.ToolStripButton();
             this.btnAuthorize = new System.Windows.Forms.ToolStripButton();
             this.btnCertificate = new System.Windows.Forms.ToolStripButton();
-            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
-            this.btnRegister = new System.Windows.Forms.ToolStripButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSelectAllDomains = new System.Windows.Forms.ToolStripButton();
             this.btnReverseSelectDomain = new System.Windows.Forms.ToolStripButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -83,19 +84,19 @@
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
             this.registerToolStripMenuItem.Text = "&Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(208, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(161, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -123,6 +124,7 @@
             this.toolStripLabel1,
             this.cmbAccounts,
             this.btnRefresh,
+            this.btnEdit,
             this.btnRegister});
             this.toolStrip1.Location = new System.Drawing.Point(0, 32);
             this.toolStrip1.Name = "toolStrip1";
@@ -143,6 +145,26 @@
             this.cmbAccounts.Name = "cmbAccounts";
             this.cmbAccounts.Size = new System.Drawing.Size(550, 32);
             this.cmbAccounts.SelectedIndexChanged += new System.EventHandler(this.cmbAccounts_SelectedIndexChanged);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(78, 29);
+            this.btnRefresh.Text = "&Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnRegister.Image")));
+            this.btnRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(85, 29);
+            this.btnRegister.Text = "&Register";
+            this.btnRegister.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // dgvDomains
             // 
@@ -228,36 +250,6 @@
             this.btnCertificate.Text = "Certificate";
             this.btnCertificate.Click += new System.EventHandler(this.btnCertificate_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(78, 29);
-            this.btnRefresh.Text = "&Refresh";
-            this.btnRefresh.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnRegister.Image")));
-            this.btnRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(85, 29);
-            this.btnRegister.Text = "&Register";
-            this.btnRegister.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(635, 64);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 451);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Certificate";
-            // 
             // btnSelectAllDomains
             // 
             this.btnSelectAllDomains.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -277,6 +269,26 @@
             this.btnReverseSelectDomain.Size = new System.Drawing.Size(136, 28);
             this.btnReverseSelectDomain.Text = "Reverse Select";
             this.btnReverseSelectDomain.Click += new System.EventHandler(this.btnReverseSelectDomain_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(635, 64);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(367, 451);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Certificate";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(48, 29);
+            this.btnEdit.Text = "&Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // frmMain
             // 
@@ -333,6 +345,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ToolStripButton btnSelectAllDomains;
         private System.Windows.Forms.ToolStripButton btnReverseSelectDomain;
+        private System.Windows.Forms.ToolStripButton btnEdit;
     }
 }
 

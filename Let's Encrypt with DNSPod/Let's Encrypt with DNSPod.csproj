@@ -112,6 +112,12 @@
     <Compile Include="UI\frmAddDomains.Designer.cs">
       <DependentUpon>frmAddDomains.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmEditAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmEditAccount.Designer.cs">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </Compile>
     <EmbeddedResource Include="UI\frmAddDomains.resx">
       <DependentUpon>frmAddDomains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmEditAccount.resx">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>

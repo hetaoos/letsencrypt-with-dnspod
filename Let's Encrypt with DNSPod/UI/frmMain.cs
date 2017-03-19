@@ -289,5 +289,13 @@ namespace XWare.ACME.UI
             }
             return false;
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (account == null)
+                return;
+            var frm = new frmEditAccount(account);
+            frm.ShowDialog();
+        }
     }
 }
