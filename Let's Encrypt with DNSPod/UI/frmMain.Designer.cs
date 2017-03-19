@@ -40,6 +40,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cmbAccounts = new System.Windows.Forms.ToolStripComboBox();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnRegister = new System.Windows.Forms.ToolStripButton();
             this.dgvDomains = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,17 +48,19 @@
             this.btnRefreshDomains = new System.Windows.Forms.ToolStripButton();
             this.btnAddDomains = new System.Windows.Forms.ToolStripButton();
             this.btnAuthorize = new System.Windows.Forms.ToolStripButton();
-            this.btnCertificate = new System.Windows.Forms.ToolStripButton();
             this.btnSelectAllDomains = new System.Windows.Forms.ToolStripButton();
             this.btnReverseSelectDomain = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.btnCertificate = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDomains)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -156,6 +159,16 @@
             this.btnRefresh.Text = "&Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(48, 29);
+            this.btnEdit.Text = "&Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // btnRegister
             // 
             this.btnRegister.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -201,7 +214,6 @@
             this.btnRefreshDomains,
             this.btnAddDomains,
             this.btnAuthorize,
-            this.btnCertificate,
             this.btnSelectAllDomains,
             this.btnReverseSelectDomain});
             this.toolStrip2.Location = new System.Drawing.Point(3, 24);
@@ -240,16 +252,6 @@
             this.btnAuthorize.Text = "&Authorize";
             this.btnAuthorize.Click += new System.EventHandler(this.btnAuthorize_Click);
             // 
-            // btnCertificate
-            // 
-            this.btnCertificate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnCertificate.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificate.Image")));
-            this.btnCertificate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCertificate.Name = "btnCertificate";
-            this.btnCertificate.Size = new System.Drawing.Size(102, 28);
-            this.btnCertificate.Text = "Certificate";
-            this.btnCertificate.Click += new System.EventHandler(this.btnCertificate_Click);
-            // 
             // btnSelectAllDomains
             // 
             this.btnSelectAllDomains.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -272,6 +274,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.toolStrip3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(635, 64);
             this.groupBox2.Name = "groupBox2";
@@ -280,15 +283,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Certificate";
             // 
-            // btnEdit
+            // toolStrip3
             // 
-            this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(48, 29);
-            this.btnEdit.Text = "&Edit";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCertificate});
+            this.toolStrip3.Location = new System.Drawing.Point(3, 24);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(361, 31);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // btnCertificate
+            // 
+            this.btnCertificate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCertificate.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificate.Image")));
+            this.btnCertificate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCertificate.Name = "btnCertificate";
+            this.btnCertificate.Size = new System.Drawing.Size(102, 28);
+            this.btnCertificate.Text = "Certificate";
+            this.btnCertificate.Click += new System.EventHandler(this.btnCertificate_Click);
             // 
             // frmMain
             // 
@@ -316,6 +330,10 @@
             this.groupBox1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,13 +357,14 @@
         private System.Windows.Forms.ToolStripButton btnRefreshDomains;
         private System.Windows.Forms.ToolStripButton btnAddDomains;
         private System.Windows.Forms.ToolStripButton btnAuthorize;
-        private System.Windows.Forms.ToolStripButton btnCertificate;
         private System.Windows.Forms.ToolStripButton btnRegister;
         private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ToolStripButton btnSelectAllDomains;
         private System.Windows.Forms.ToolStripButton btnReverseSelectDomain;
         private System.Windows.Forms.ToolStripButton btnEdit;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton btnCertificate;
     }
 }
 

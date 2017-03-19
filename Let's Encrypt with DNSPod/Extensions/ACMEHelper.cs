@@ -166,12 +166,12 @@ namespace XWare.ACME
             }
             var derB64u = JwsHelper.Base64UrlEncode(derRaw);
 
-            Console.WriteLine($"\nRequesting Certificate");
+            log.Info($"\nRequesting Certificate");
             var certRequ = client.RequestCertificate(derB64u);
 
-            Console.WriteLine($" Request Status: {certRequ.StatusCode}");
+            log.Info($" Request Status: {certRequ.StatusCode}");
 
-            //Console.WriteLine($"Refreshing Cert Request");
+            //log.Info($"Refreshing Cert Request");
             //client.RefreshCertificateRequest(certRequ);
 
             if (certRequ.StatusCode == System.Net.HttpStatusCode.Created)
@@ -196,7 +196,7 @@ namespace XWare.ACME
                 using (var fs = new FileStream(csrPemFile, FileMode.Create))
                     cp.ExportCsr(csr, EncodingFormat.PEM, fs);
 
-                Console.WriteLine($" Saving Certificate to {crtDerFile}");
+                log.Info($" Saving Certificate to {crtDerFile}");
                 using (var file = File.Create(crtDerFile))
                     certRequ.SaveCertificate(file);
 
@@ -211,7 +211,7 @@ namespace XWare.ACME
                 // To generate a PKCS#12 (.PFX) file, we need the issuer's public certificate
                 var isuPemFile = GetIssuerCertificate(certRequ, cp, account);
 
-                Console.WriteLine($" Saving Certificate to {crtPfxFile} (with no password set)");
+                log.Info($" Saving Certificate to {crtPfxFile} (with no password set)");
                 using (FileStream source = new FileStream(isuPemFile, FileMode.Open),
                         target = new FileStream(crtPfxFile, FileMode.Create))
                 {
@@ -261,7 +261,7 @@ namespace XWare.ACME
                         if (!File.Exists(cacertDerFile))
                             File.Copy(tmp, cacertDerFile, true);
 
-                        Console.WriteLine($" Saving Issuer Certificate to {cacertPemFile}");
+                        log.Info($" Saving Issuer Certificate to {cacertPemFile}");
                         if (!File.Exists(cacertPemFile))
                             using (FileStream source = new FileStream(cacertDerFile, FileMode.Open),
                                     target = new FileStream(cacertPemFile, FileMode.Create))
