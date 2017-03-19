@@ -30,37 +30,37 @@ namespace XWare.ACME.Data
         /// 域名
         /// </summary>
         [BsonIgnore]
-        [DisplayName("选择")]
+        //[DisplayName("选择")]
         public bool @checked { get; set; }
 
         /// <summary>
         /// 域名
         /// </summary>
         [BsonIndex]
-        [DisplayName("域名")]
+        //[DisplayName("域名")]
         [ReadOnly(true)]
         public string domain { get; set; }
 
         /// <summary>
         /// 过期时间
         /// </summary>
-        [DisplayName("过期时间")]
+        //[DisplayName("过期时间")]
         [ReadOnly(true)]
         public DateTime? expires { get; set; }
 
         /// <summary>
         /// 状态
         /// </summary>
-        [DisplayName("状态")]
+        //[DisplayName("状态")]
         [ReadOnly(true)]
         public string status { get; set; }
 
-        [DisplayName("更新时间")]
+        //[DisplayName("更新时间")]
         [ReadOnly(true)]
         public DateTime? updated { get; set; }
 
         [Browsable(false)]
-        [DisplayName("创建时间")]
+        //[DisplayName("创建时间")]
         [ReadOnly(true)]
         public DateTime? created { get; set; }
 

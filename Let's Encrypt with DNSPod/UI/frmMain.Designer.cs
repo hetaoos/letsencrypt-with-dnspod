@@ -46,7 +46,6 @@
             this.btnAddDomains = new System.Windows.Forms.ToolStripButton();
             this.btnAuthorize = new System.Windows.Forms.ToolStripButton();
             this.btnCertificate = new System.Windows.Forms.ToolStripButton();
-            this.btnLoad = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnRegister = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -115,7 +114,7 @@
             // 
             this.labInfo.Name = "labInfo";
             this.labInfo.Size = new System.Drawing.Size(64, 24);
-            this.labInfo.Text = "就绪。";
+            this.labInfo.Text = "Ready";
             // 
             // toolStrip1
             // 
@@ -124,7 +123,6 @@
             this.toolStripLabel1,
             this.cmbAccounts,
             this.btnRefresh,
-            this.btnLoad,
             this.btnRegister});
             this.toolStrip1.Location = new System.Drawing.Point(0, 32);
             this.toolStrip1.Name = "toolStrip1";
@@ -144,6 +142,7 @@
             this.cmbAccounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccounts.Name = "cmbAccounts";
             this.cmbAccounts.Size = new System.Drawing.Size(550, 32);
+            this.cmbAccounts.SelectedIndexChanged += new System.EventHandler(this.cmbAccounts_SelectedIndexChanged);
             // 
             // dgvDomains
             // 
@@ -228,16 +227,6 @@
             this.btnCertificate.Size = new System.Drawing.Size(102, 28);
             this.btnCertificate.Text = "Certificate";
             this.btnCertificate.Click += new System.EventHandler(this.btnCertificate_Click);
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnLoad.Image = ((System.Drawing.Image)(resources.GetObject("btnLoad.Image")));
-            this.btnLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(56, 29);
-            this.btnLoad.Text = "&Load";
-            this.btnLoad.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // btnRefresh
             // 
@@ -341,7 +330,6 @@
         private System.Windows.Forms.ToolStripButton btnCertificate;
         private System.Windows.Forms.ToolStripButton btnRegister;
         private System.Windows.Forms.ToolStripButton btnRefresh;
-        private System.Windows.Forms.ToolStripButton btnLoad;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ToolStripButton btnSelectAllDomains;
         private System.Windows.Forms.ToolStripButton btnReverseSelectDomain;

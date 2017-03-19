@@ -177,6 +177,7 @@ namespace XWare.ACME.UI
 
         private async void btnAuthorize_Click(object sender, EventArgs e)
         {
+            TryLoad();
             var ls = dgvDomains.DataSource as List<Domain>;
             var dt = DateTime.Now.AddDays(-2);
             ls = ls.Where(o => o.status != "valid" || o.expires < dt).ToList();
@@ -187,6 +188,7 @@ namespace XWare.ACME.UI
 
         private void btnCertificate_Click(object sender, EventArgs e)
         {
+            TryLoad();
             var ls = dgvDomains.DataSource as List<Domain>;
             var r = ACMEHelper.GetCertificate(client, account, ls, @"Z:\");
         }
@@ -211,6 +213,81 @@ namespace XWare.ACME.UI
                     it.@checked = !it.@checked;
                 dgvDomains.Refresh();
             }
+        }
+
+        private void cmbAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var account = cmbAccounts.SelectedItem as Account;
+            if (account == null)
+            {
+                log.Error("not account.");
+                return;
+            }
+            if (this.account?.id != account.id)
+            {
+                this.account = account;
+                this.signer = null;
+                this.client = null;
+                labInfo.Text = "Ready";
+                btnRefreshDomains.PerformClick();
+            }
+
+        }
+
+        private bool TryLoad(bool force = false)
+        {
+            if (force == false && this.signer != null && this.client != null)
+                return true;
+
+            RS256Signer signer = null;
+            AcmeClient client = null;
+            try
+            {
+                signer = account.Signer;
+
+                client = new AcmeClient(new Uri(account.uri), new AcmeServerDirectory(), signer);
+                client.Init();
+                log.Info("\nGetting AcmeServerDirectory");
+                client.GetDirectory(true);
+
+                client.Registration = account.Registration;
+
+                this.client = client;
+                this.signer = signer;
+                log.Info("load done.");
+                labInfo.Text = account.ToString();
+                //
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                if (client != null)
+                {
+                    client.Dispose();
+                    client = null;
+                }
+
+                if (signer != null)
+                {
+                    signer.Dispose();
+                    signer = null;
+                }
+
+                var acmeWebException = ex as AcmeClient.AcmeWebException;
+                if (acmeWebException != null)
+                {
+                    log.Error(acmeWebException.Message);
+                    log.Error("ACME Server Returned:");
+                    log.Error(acmeWebException.Response.ContentAsString);
+                }
+                else
+                {
+                    log.Error(ex);
+                }
+
+            }
+            return false;
         }
     }
 }

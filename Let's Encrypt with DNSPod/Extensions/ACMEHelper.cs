@@ -22,6 +22,7 @@ namespace XWare.ACME
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+
         public static async Task<bool> Authorize(AcmeClient client, Account account, List<Domain> ls)
         {
             if (!(account.dnspod_tokens?.Count > 0))

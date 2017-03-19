@@ -39,7 +39,7 @@
             this.txtDomains.Location = new System.Drawing.Point(13, 45);
             this.txtDomains.Multiline = true;
             this.txtDomains.Name = "txtDomains";
-            this.txtDomains.Size = new System.Drawing.Size(324, 191);
+            this.txtDomains.Size = new System.Drawing.Size(350, 200);
             this.txtDomains.TabIndex = 10;
             // 
             // label2
@@ -47,13 +47,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 18);
+            this.label2.Size = new System.Drawing.Size(80, 18);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Domains";
+            this.label2.Text = "Domains:";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(248, 256);
+            this.btnCancel.Location = new System.Drawing.Point(274, 256);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 28);
             this.btnCancel.TabIndex = 12;
@@ -63,7 +63,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(140, 256);
+            this.btnAdd.Location = new System.Drawing.Point(166, 256);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(102, 28);
             this.btnAdd.TabIndex = 11;
@@ -75,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 305);
+            this.ClientSize = new System.Drawing.Size(378, 304);
             this.Controls.Add(this.txtDomains);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
