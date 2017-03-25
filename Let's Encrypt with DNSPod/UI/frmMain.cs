@@ -4,6 +4,7 @@ using ACMESharp.HTTP;
 using ACMESharp.JOSE;
 using ACMESharp.PKI;
 using log4net;
+using OpenSSL.X509;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -184,7 +185,28 @@ namespace XWare.ACME.UI
         {
             TryLoad();
             var ls = dgvDomains.DataSource as List<Domain>;
-            var r = ACMEHelper.GetCertificate(client, account, ls, @"Z:\");
+            var param = new CertificateGeneratorParam()
+            {
+                account = account,
+                client = client,
+                common_name = txtCSRCommonName.Text,
+                configPath = txtSavePath.Text,
+                csr = txtCSR.Text,
+                ls = ls,
+            };
+            try
+            {
+                if (radioCSRAutoGen.Checked)
+                    ACMEHelper.GetCertificateAutoGen(param);
+                else
+                {
+                    ACMEHelper.GetCertificateUseCSR(param);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
         }
 
         private void btnSelectAllDomains_Click(object sender, EventArgs e)
@@ -292,6 +314,13 @@ namespace XWare.ACME.UI
                 return;
             var frm = new frmEditAccount(account);
             frm.ShowDialog();
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            var dlg = folderBrowserDialog1.ShowDialog();
+            if (dlg == DialogResult.OK)
+                txtSavePath.Text = folderBrowserDialog1.SelectedPath;
         }
     }
 }

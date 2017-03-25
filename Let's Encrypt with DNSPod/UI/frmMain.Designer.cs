@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusMain = new System.Windows.Forms.StatusStrip();
             this.labInfo = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolMain = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cmbAccounts = new System.Windows.Forms.ToolStripComboBox();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
@@ -44,35 +44,48 @@
             this.btnRegister = new System.Windows.Forms.ToolStripButton();
             this.dgvDomains = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolDomains = new System.Windows.Forms.ToolStrip();
             this.btnRefreshDomains = new System.Windows.Forms.ToolStripButton();
             this.btnAddDomains = new System.Windows.Forms.ToolStripButton();
             this.btnAuthorize = new System.Windows.Forms.ToolStripButton();
             this.btnSelectAllDomains = new System.Windows.Forms.ToolStripButton();
             this.btnReverseSelectDomain = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolCertificate = new System.Windows.Forms.ToolStrip();
             this.btnCertificate = new System.Windows.Forms.ToolStripButton();
-            this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSavePath = new System.Windows.Forms.TextBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioCSRAutoGen = new System.Windows.Forms.RadioButton();
+            this.radioCSRUseCustom = new System.Windows.Forms.RadioButton();
+            this.txtCSR = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCSRCommonName = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.menuMain.SuspendLayout();
+            this.statusMain.SuspendLayout();
+            this.toolMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDomains)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
+            this.toolDomains.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.toolStrip3.SuspendLayout();
+            this.toolCertificate.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // menuMain
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMain.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1002, 32);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuMain.Location = new System.Drawing.Point(0, 0);
+            this.menuMain.Name = "menuMain";
+            this.menuMain.Size = new System.Drawing.Size(1238, 32);
+            this.menuMain.TabIndex = 0;
+            this.menuMain.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -103,16 +116,16 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // statusStrip1
+            // statusMain
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusMain.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labInfo});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 515);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1002, 29);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusMain.Location = new System.Drawing.Point(0, 515);
+            this.statusMain.Name = "statusMain";
+            this.statusMain.Size = new System.Drawing.Size(1238, 29);
+            this.statusMain.TabIndex = 1;
+            this.statusMain.Text = "statusStrip1";
             // 
             // labInfo
             // 
@@ -120,20 +133,20 @@
             this.labInfo.Size = new System.Drawing.Size(64, 24);
             this.labInfo.Text = "Ready";
             // 
-            // toolStrip1
+            // toolMain
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolMain.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.cmbAccounts,
             this.btnRefresh,
             this.btnEdit,
             this.btnRegister});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 32);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1002, 32);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolMain.Location = new System.Drawing.Point(0, 32);
+            this.toolMain.Name = "toolMain";
+            this.toolMain.Size = new System.Drawing.Size(1238, 32);
+            this.toolMain.TabIndex = 7;
+            this.toolMain.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
@@ -198,7 +211,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvDomains);
-            this.groupBox1.Controls.Add(this.toolStrip2);
+            this.groupBox1.Controls.Add(this.toolDomains);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 64);
             this.groupBox1.Name = "groupBox1";
@@ -207,20 +220,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Domains";
             // 
-            // toolStrip2
+            // toolDomains
             // 
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolDomains.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolDomains.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRefreshDomains,
             this.btnAddDomains,
             this.btnAuthorize,
             this.btnSelectAllDomains,
             this.btnReverseSelectDomain});
-            this.toolStrip2.Location = new System.Drawing.Point(3, 24);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(629, 31);
-            this.toolStrip2.TabIndex = 0;
-            this.toolStrip2.Text = "toolStrip2";
+            this.toolDomains.Location = new System.Drawing.Point(3, 24);
+            this.toolDomains.Name = "toolDomains";
+            this.toolDomains.Size = new System.Drawing.Size(629, 31);
+            this.toolDomains.TabIndex = 0;
+            this.toolDomains.Text = "toolStrip2";
             // 
             // btnRefreshDomains
             // 
@@ -274,25 +287,27 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.toolStrip3);
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.panel1);
+            this.groupBox2.Controls.Add(this.toolCertificate);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(635, 64);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 451);
+            this.groupBox2.Size = new System.Drawing.Size(603, 451);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Certificate";
             // 
-            // toolStrip3
+            // toolCertificate
             // 
-            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolCertificate.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolCertificate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCertificate});
-            this.toolStrip3.Location = new System.Drawing.Point(3, 24);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(361, 31);
-            this.toolStrip3.TabIndex = 0;
-            this.toolStrip3.Text = "toolStrip3";
+            this.toolCertificate.Location = new System.Drawing.Point(3, 24);
+            this.toolCertificate.Name = "toolCertificate";
+            this.toolCertificate.Size = new System.Drawing.Size(597, 31);
+            this.toolCertificate.TabIndex = 0;
+            this.toolCertificate.Text = "toolStrip3";
             // 
             // btnCertificate
             // 
@@ -304,36 +319,142 @@
             this.btnCertificate.Text = "Certificate";
             this.btnCertificate.Click += new System.EventHandler(this.btnCertificate_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Save Path:";
+            // 
+            // txtSavePath
+            // 
+            this.txtSavePath.Location = new System.Drawing.Point(17, 38);
+            this.txtSavePath.Name = "txtSavePath";
+            this.txtSavePath.Size = new System.Drawing.Size(485, 28);
+            this.txtSavePath.TabIndex = 2;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(508, 38);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(80, 28);
+            this.btnBrowse.TabIndex = 3;
+            this.btnBrowse.Text = "&Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnBrowse);
+            this.panel1.Controls.Add(this.txtSavePath);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 55);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(597, 93);
+            this.panel1.TabIndex = 4;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtCSRCommonName);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.txtCSR);
+            this.groupBox3.Controls.Add(this.radioCSRUseCustom);
+            this.groupBox3.Controls.Add(this.radioCSRAutoGen);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 148);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(597, 300);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "CSR (Certificate Signing Request)";
+            // 
+            // radioCSRAutoGen
+            // 
+            this.radioCSRAutoGen.AutoSize = true;
+            this.radioCSRAutoGen.Checked = true;
+            this.radioCSRAutoGen.Location = new System.Drawing.Point(7, 28);
+            this.radioCSRAutoGen.Name = "radioCSRAutoGen";
+            this.radioCSRAutoGen.Size = new System.Drawing.Size(240, 22);
+            this.radioCSRAutoGen.TabIndex = 0;
+            this.radioCSRAutoGen.TabStop = true;
+            this.radioCSRAutoGen.Text = "Automatically generate.";
+            this.radioCSRAutoGen.UseVisualStyleBackColor = true;
+            // 
+            // radioCSRUseCustom
+            // 
+            this.radioCSRUseCustom.AutoSize = true;
+            this.radioCSRUseCustom.Location = new System.Drawing.Point(7, 101);
+            this.radioCSRUseCustom.Name = "radioCSRUseCustom";
+            this.radioCSRUseCustom.Size = new System.Drawing.Size(132, 22);
+            this.radioCSRUseCustom.TabIndex = 1;
+            this.radioCSRUseCustom.Text = "Use custom.";
+            this.radioCSRUseCustom.UseVisualStyleBackColor = true;
+            // 
+            // txtCSR
+            // 
+            this.txtCSR.Location = new System.Drawing.Point(30, 129);
+            this.txtCSR.Multiline = true;
+            this.txtCSR.Name = "txtCSR";
+            this.txtCSR.Size = new System.Drawing.Size(558, 153);
+            this.txtCSR.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 18);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Common Name:";
+            // 
+            // txtCSRCommonName
+            // 
+            this.txtCSRCommonName.Location = new System.Drawing.Point(152, 61);
+            this.txtCSRCommonName.Name = "txtCSRCommonName";
+            this.txtCSRCommonName.Size = new System.Drawing.Size(350, 28);
+            this.txtCSRCommonName.TabIndex = 4;
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 544);
+            this.ClientSize = new System.Drawing.Size(1238, 544);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.toolMain);
+            this.Controls.Add(this.statusMain);
+            this.Controls.Add(this.menuMain);
+            this.MainMenuStrip = this.menuMain;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Let\'s Encrypt with DNSPod";
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
+            this.statusMain.ResumeLayout(false);
+            this.statusMain.PerformLayout();
+            this.toolMain.ResumeLayout(false);
+            this.toolMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDomains)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
+            this.toolDomains.ResumeLayout(false);
+            this.toolDomains.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.toolStrip3.ResumeLayout(false);
-            this.toolStrip3.PerformLayout();
+            this.toolCertificate.ResumeLayout(false);
+            this.toolCertificate.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,19 +462,19 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusMain;
         private System.Windows.Forms.ToolStripStatusLabel labInfo;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolMain;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox cmbAccounts;
         private System.Windows.Forms.DataGridView dgvDomains;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStrip toolDomains;
         private System.Windows.Forms.ToolStripButton btnRefreshDomains;
         private System.Windows.Forms.ToolStripButton btnAddDomains;
         private System.Windows.Forms.ToolStripButton btnAuthorize;
@@ -363,8 +484,19 @@
         private System.Windows.Forms.ToolStripButton btnSelectAllDomains;
         private System.Windows.Forms.ToolStripButton btnReverseSelectDomain;
         private System.Windows.Forms.ToolStripButton btnEdit;
-        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStrip toolCertificate;
         private System.Windows.Forms.ToolStripButton btnCertificate;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.TextBox txtSavePath;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtCSR;
+        private System.Windows.Forms.RadioButton radioCSRUseCustom;
+        private System.Windows.Forms.RadioButton radioCSRAutoGen;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCSRCommonName;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

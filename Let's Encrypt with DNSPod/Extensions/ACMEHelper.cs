@@ -137,12 +137,20 @@ namespace XWare.ACME
             return true;
         }
 
-        public static string GetCertificate(AcmeClient client, Account account, List<Domain> ls, string configPath)
+        public static void GetCertificateAutoGen(CertificateGeneratorParam param)
         {
-            ls = ls.Where(o => o.status == "valid").ToList();
-            if (ls.Count == 0)
-                return "";
-            var dnsIdentifier = ls.FirstOrDefault().domain;
+            if (param == null)
+            {
+                log.Info($" {nameof(param)} is null");
+                return;
+            }
+            param.ls = param.ls.Where(o => o.status == "valid").ToList();
+            if (param.ls.Count == 0)
+            {
+                log.Info($" can't find a valid domain name.");
+                return;
+            }
+            var dnsIdentifier = string.IsNullOrWhiteSpace(param.common_name) ? param.ls.FirstOrDefault().domain : param.common_name.Trim();
             var cp = CertificateProvider.GetProvider();
             var rsaPkp = new RsaPrivateKeyParams();
 
@@ -150,7 +158,7 @@ namespace XWare.ACME
             var csrDetails = new CsrDetails
             {
                 CommonName = dnsIdentifier,
-                AlternativeNames = ls.Select(o => o.domain).ToList(),
+                AlternativeNames = param.ls.Select(o => o.domain).ToList(),
             };
             var csrParams = new CsrParams
             {
@@ -167,7 +175,7 @@ namespace XWare.ACME
             var derB64u = JwsHelper.Base64UrlEncode(derRaw);
 
             log.Info($"\nRequesting Certificate");
-            var certRequ = client.RequestCertificate(derB64u);
+            var certRequ = param.client.RequestCertificate(derB64u);
 
             log.Info($" Request Status: {certRequ.StatusCode}");
 
@@ -176,15 +184,15 @@ namespace XWare.ACME
 
             if (certRequ.StatusCode == System.Net.HttpStatusCode.Created)
             {
-                var keyGenFile = Path.Combine(configPath, $"{dnsIdentifier}-gen-key.json");
-                var keyPemFile = Path.Combine(configPath, $"{dnsIdentifier}-key.pem");
-                var csrGenFile = Path.Combine(configPath, $"{dnsIdentifier}-gen-csr.json");
-                var csrPemFile = Path.Combine(configPath, $"{dnsIdentifier}-csr.pem");
-                var crtDerFile = Path.Combine(configPath, $"{dnsIdentifier}-crt.der");
-                var crtPemFile = Path.Combine(configPath, $"{dnsIdentifier}-crt.pem");
+                var keyGenFile = Path.Combine(param.configPath, $"{dnsIdentifier}-gen-key.json");
+                var keyPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-key.pem");
+                var csrGenFile = Path.Combine(param.configPath, $"{dnsIdentifier}-gen-csr.json");
+                var csrPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-csr.pem");
+                var crtDerFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.der");
+                var crtPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.pem");
                 string crtPfxFile = null;
 
-                crtPfxFile = Path.Combine(configPath, $"{dnsIdentifier}-all.pfx");
+                crtPfxFile = Path.Combine(param.configPath, $"{dnsIdentifier}-all.pfx");
 
 
                 using (var fs = new FileStream(keyGenFile, FileMode.Create))
@@ -209,7 +217,7 @@ namespace XWare.ACME
                 }
 
                 // To generate a PKCS#12 (.PFX) file, we need the issuer's public certificate
-                var isuPemFile = GetIssuerCertificate(certRequ, cp, account);
+                var isuPemFile = GetIssuerCertificate(certRequ, cp, param.account);
 
                 log.Info($" Saving Certificate to {crtPfxFile} (with no password set)");
                 using (FileStream source = new FileStream(isuPemFile, FileMode.Open),
@@ -221,7 +229,61 @@ namespace XWare.ACME
 
                 cp.Dispose();
 
-                return crtPfxFile;
+                return;
+            }
+
+            throw new Exception($"Request status = {certRequ.StatusCode}");
+        }
+
+        public static void GetCertificateUseCSR(CertificateGeneratorParam param)
+        {
+            if (param == null)
+            {
+                log.Info($" {nameof(param)} is null");
+                return;
+            }
+            var dnsIdentifier = DateTime.Now.ToString("yyyyMMddHHmmss");
+            var cp = CertificateProvider.GetProvider();
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(param.csr));
+            var csr = cp.ImportCsr(EncodingFormat.PEM, ms);
+            ms.Dispose();
+            byte[] derRaw;
+            using (var bs = new MemoryStream())
+            {
+                cp.ExportCsr(csr, EncodingFormat.DER, bs);
+                derRaw = bs.ToArray();
+            }
+
+            var derB64u = JwsHelper.Base64UrlEncode(derRaw);
+
+            log.Info($"\nRequesting Certificate");
+            var certRequ = param.client.RequestCertificate(derB64u);
+
+            log.Info($" Request Status: {certRequ.StatusCode}");
+
+            if (certRequ.StatusCode == System.Net.HttpStatusCode.Created)
+            {
+                var csrPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-csr.pem");
+                var crtDerFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.der");
+                var crtPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.pem");
+                using (var fs = new FileStream(csrPemFile, FileMode.Create))
+                    cp.ExportCsr(csr, EncodingFormat.PEM, fs);
+
+                log.Info($" Saving Certificate to {crtDerFile}");
+                using (var file = File.Create(crtDerFile))
+                    certRequ.SaveCertificate(file);
+
+                Crt crt;
+                using (FileStream source = new FileStream(crtDerFile, FileMode.Open),
+                        target = new FileStream(crtPemFile, FileMode.Create))
+                {
+                    crt = cp.ImportCertificate(EncodingFormat.DER, source);
+                    cp.ExportCertificate(crt, EncodingFormat.PEM, target);
+                }
+                cp.Dispose();
+
+                return;
             }
 
             throw new Exception($"Request status = {certRequ.StatusCode}");
@@ -283,6 +345,19 @@ namespace XWare.ACME
             return null;
         }
     }
+
+    public class CertificateGeneratorParam
+    {
+        public AcmeClient client { get; set; }
+        public Account account { get; set; }
+        public List<Domain> ls { get; set; }
+        public string configPath { get; set; }
+
+        public string common_name { get; set; }
+
+        public string csr { get; set; }
+    }
+
     public class DnspodApiItem
     {
 
