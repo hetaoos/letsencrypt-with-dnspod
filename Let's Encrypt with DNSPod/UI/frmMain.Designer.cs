@@ -124,7 +124,7 @@
             this.statusMain.Location = new System.Drawing.Point(0, 535);
             this.statusMain.Name = "statusMain";
             this.statusMain.Size = new System.Drawing.Size(1178, 29);
-            this.statusMain.TabIndex = 1;
+            this.statusMain.TabIndex = 4;
             this.statusMain.Text = "statusStrip1";
             // 
             // labInfo
@@ -145,7 +145,7 @@
             this.toolMain.Location = new System.Drawing.Point(0, 32);
             this.toolMain.Name = "toolMain";
             this.toolMain.Size = new System.Drawing.Size(1178, 32);
-            this.toolMain.TabIndex = 7;
+            this.toolMain.TabIndex = 1;
             this.toolMain.Text = "toolStrip1";
             // 
             // toolStripLabel1
@@ -206,7 +206,7 @@
             this.dgvDomains.RowTemplate.Height = 30;
             this.dgvDomains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDomains.Size = new System.Drawing.Size(1172, 413);
-            this.dgvDomains.TabIndex = 8;
+            this.dgvDomains.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -216,7 +216,7 @@
             this.groupBox1.Location = new System.Drawing.Point(0, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1178, 471);
-            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Domains";
             // 
@@ -294,7 +294,7 @@
             this.groupBox2.Location = new System.Drawing.Point(656, 64);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(522, 471);
-            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Certificate";
             // 
@@ -325,7 +325,7 @@
             this.label1.Location = new System.Drawing.Point(14, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 18);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Save Path:";
             // 
             // txtSavePath
@@ -333,14 +333,14 @@
             this.txtSavePath.Location = new System.Drawing.Point(17, 38);
             this.txtSavePath.Name = "txtSavePath";
             this.txtSavePath.Size = new System.Drawing.Size(384, 28);
-            this.txtSavePath.TabIndex = 2;
+            this.txtSavePath.TabIndex = 1;
             // 
             // btnBrowse
             // 
             this.btnBrowse.Location = new System.Drawing.Point(422, 38);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(80, 28);
-            this.btnBrowse.TabIndex = 3;
+            this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "&Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
@@ -354,7 +354,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(516, 93);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -367,7 +367,7 @@
             this.groupBox3.Location = new System.Drawing.Point(3, 148);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(516, 320);
-            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "CSR (Certificate Signing Request)";
             // 
@@ -389,7 +389,7 @@
             this.radioCSRUseCustom.Location = new System.Drawing.Point(7, 101);
             this.radioCSRUseCustom.Name = "radioCSRUseCustom";
             this.radioCSRUseCustom.Size = new System.Drawing.Size(285, 22);
-            this.radioCSRUseCustom.TabIndex = 1;
+            this.radioCSRUseCustom.TabIndex = 3;
             this.radioCSRUseCustom.Text = "&Use custom CSR (PEM Format).";
             this.radioCSRUseCustom.UseVisualStyleBackColor = true;
             // 
@@ -399,7 +399,7 @@
             this.txtCSR.Multiline = true;
             this.txtCSR.Name = "txtCSR";
             this.txtCSR.Size = new System.Drawing.Size(472, 153);
-            this.txtCSR.TabIndex = 2;
+            this.txtCSR.TabIndex = 4;
             // 
             // label2
             // 
@@ -407,7 +407,7 @@
             this.label2.Location = new System.Drawing.Point(30, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 18);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 1;
             this.label2.Text = "Common &Name:";
             // 
             // txtCSRCommonName
@@ -415,7 +415,7 @@
             this.txtCSRCommonName.Location = new System.Drawing.Point(152, 61);
             this.txtCSRCommonName.Name = "txtCSRCommonName";
             this.txtCSRCommonName.Size = new System.Drawing.Size(350, 28);
-            this.txtCSRCommonName.TabIndex = 4;
+            this.txtCSRCommonName.TabIndex = 2;
             // 
             // folderBrowserDialog1
             // 
