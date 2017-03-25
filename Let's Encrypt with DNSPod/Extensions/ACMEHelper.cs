@@ -144,13 +144,13 @@ namespace XWare.ACME
                 log.Info($" {nameof(param)} is null");
                 return;
             }
-            param.ls = param.ls.Where(o => o.status == "valid").ToList();
-            if (param.ls.Count == 0)
+            param.domains = param.domains.Where(o => o.valid).ToList();
+            if (param.domains.Count == 0)
             {
                 log.Info($" can't find a valid domain name.");
                 return;
             }
-            var dnsIdentifier = string.IsNullOrWhiteSpace(param.common_name) ? param.ls.FirstOrDefault().domain : param.common_name.Trim();
+            var dnsIdentifier = string.IsNullOrWhiteSpace(param.common_name) ? param.domains.FirstOrDefault().domain : param.common_name.Trim();
             var cp = CertificateProvider.GetProvider();
             var rsaPkp = new RsaPrivateKeyParams();
 
@@ -158,7 +158,7 @@ namespace XWare.ACME
             var csrDetails = new CsrDetails
             {
                 CommonName = dnsIdentifier,
-                AlternativeNames = param.ls.Select(o => o.domain).ToList(),
+                AlternativeNames = param.domains.Select(o => o.domain).ToList(),
             };
             var csrParams = new CsrParams
             {
@@ -184,15 +184,15 @@ namespace XWare.ACME
 
             if (certRequ.StatusCode == System.Net.HttpStatusCode.Created)
             {
-                var keyGenFile = Path.Combine(param.configPath, $"{dnsIdentifier}-gen-key.json");
-                var keyPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-key.pem");
-                var csrGenFile = Path.Combine(param.configPath, $"{dnsIdentifier}-gen-csr.json");
-                var csrPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-csr.pem");
-                var crtDerFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.der");
-                var crtPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.pem");
+                var keyGenFile = Path.Combine(param.path, $"{dnsIdentifier}-gen-key.json");
+                var keyPemFile = Path.Combine(param.path, $"{dnsIdentifier}-key.pem");
+                var csrGenFile = Path.Combine(param.path, $"{dnsIdentifier}-gen-csr.json");
+                var csrPemFile = Path.Combine(param.path, $"{dnsIdentifier}-csr.pem");
+                var crtDerFile = Path.Combine(param.path, $"{dnsIdentifier}-crt.der");
+                var crtPemFile = Path.Combine(param.path, $"{dnsIdentifier}-crt.pem");
                 string crtPfxFile = null;
 
-                crtPfxFile = Path.Combine(param.configPath, $"{dnsIdentifier}-all.pfx");
+                crtPfxFile = Path.Combine(param.path, $"{dnsIdentifier}-all.pfx");
 
 
                 using (var fs = new FileStream(keyGenFile, FileMode.Create))
@@ -264,9 +264,9 @@ namespace XWare.ACME
 
             if (certRequ.StatusCode == System.Net.HttpStatusCode.Created)
             {
-                var csrPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-csr.pem");
-                var crtDerFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.der");
-                var crtPemFile = Path.Combine(param.configPath, $"{dnsIdentifier}-crt.pem");
+                var csrPemFile = Path.Combine(param.path, $"{dnsIdentifier}-csr.pem");
+                var crtDerFile = Path.Combine(param.path, $"{dnsIdentifier}-crt.der");
+                var crtPemFile = Path.Combine(param.path, $"{dnsIdentifier}-crt.pem");
                 using (var fs = new FileStream(csrPemFile, FileMode.Create))
                     cp.ExportCsr(csr, EncodingFormat.PEM, fs);
 
@@ -350,8 +350,8 @@ namespace XWare.ACME
     {
         public AcmeClient client { get; set; }
         public Account account { get; set; }
-        public List<Domain> ls { get; set; }
-        public string configPath { get; set; }
+        public List<Domain> domains { get; set; }
+        public string path { get; set; }
 
         public string common_name { get; set; }
 

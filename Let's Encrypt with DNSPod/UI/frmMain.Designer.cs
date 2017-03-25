@@ -315,8 +315,8 @@
             this.btnCertificate.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificate.Image")));
             this.btnCertificate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCertificate.Name = "btnCertificate";
-            this.btnCertificate.Size = new System.Drawing.Size(102, 28);
-            this.btnCertificate.Text = "Certificate";
+            this.btnCertificate.Size = new System.Drawing.Size(185, 28);
+            this.btnCertificate.Text = "Generate Certificate";
             this.btnCertificate.Click += new System.EventHandler(this.btnCertificate_Click);
             // 
             // label1
@@ -388,9 +388,9 @@
             this.radioCSRUseCustom.AutoSize = true;
             this.radioCSRUseCustom.Location = new System.Drawing.Point(7, 101);
             this.radioCSRUseCustom.Name = "radioCSRUseCustom";
-            this.radioCSRUseCustom.Size = new System.Drawing.Size(132, 22);
+            this.radioCSRUseCustom.Size = new System.Drawing.Size(285, 22);
             this.radioCSRUseCustom.TabIndex = 1;
-            this.radioCSRUseCustom.Text = "Use custom.";
+            this.radioCSRUseCustom.Text = "Use custom CSR (PEM Format).";
             this.radioCSRUseCustom.UseVisualStyleBackColor = true;
             // 
             // txtCSR
@@ -414,7 +414,7 @@
             // 
             this.txtCSRCommonName.Location = new System.Drawing.Point(152, 61);
             this.txtCSRCommonName.Name = "txtCSRCommonName";
-            this.txtCSRCommonName.Size = new System.Drawing.Size(350, 28);
+            this.txtCSRCommonName.Size = new System.Drawing.Size(436, 28);
             this.txtCSRCommonName.TabIndex = 4;
             // 
             // folderBrowserDialog1

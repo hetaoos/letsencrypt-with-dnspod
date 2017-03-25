@@ -175,7 +175,7 @@ namespace XWare.ACME.UI
             TryLoad();
             var ls = dgvDomains.DataSource as List<Domain>;
             var dt = DateTime.Now.AddDays(-2);
-            ls = ls.Where(o => o.status != "valid" || o.expires < dt).ToList();
+            ls = ls.Where(o => o.valid == false).ToList();
             var r = await ACMEHelper.Authorize(client, account, ls);
             db.Domains.Update(ls);
             btnRefreshDomains.PerformClick();
@@ -184,15 +184,56 @@ namespace XWare.ACME.UI
         private void btnCertificate_Click(object sender, EventArgs e)
         {
             TryLoad();
+            if (string.IsNullOrWhiteSpace(txtSavePath.Text))
+            {
+                btnAddDomains.PerformClick();
+                if (string.IsNullOrWhiteSpace(txtSavePath.Text))
+                    return;
+            }
+            var path = txtSavePath.Text;
+            if (Directory.Exists(path) == false)
+            {
+                try
+                {
+                    Directory.CreateDirectory(path);
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex.Message);
+                }
+            }
+
+            if (radioCSRAutoGen.Checked)
+            {
+                if (string.IsNullOrWhiteSpace(txtCSRCommonName.Text) == false)
+                {
+                    var ls2 = dgvDomains.DataSource as List<Domain>;
+                    var name = txtCSRCommonName.Text;
+                    var r = ls2.Any(o => o.valid && o.domain == name);
+                    if (r == false)
+                    {
+                        log.Error("CommonName invalid.");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(txtCSR.Text))
+                {
+                    log.Error("CSR's empty.");
+                    return;
+                }
+            }
             var ls = dgvDomains.DataSource as List<Domain>;
             var param = new CertificateGeneratorParam()
             {
                 account = account,
                 client = client,
                 common_name = txtCSRCommonName.Text,
-                configPath = txtSavePath.Text,
+                path = txtSavePath.Text,
                 csr = txtCSR.Text,
-                ls = ls,
+                domains = ls,
             };
             try
             {

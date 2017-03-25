@@ -64,6 +64,16 @@ namespace XWare.ACME.Data
         [ReadOnly(true)]
         public DateTime? created { get; set; }
 
+        [BsonIgnore]
+        [ReadOnly(true)]
+        public bool valid
+        {
+            get
+            {
+                return status == "valid" && expires > DateTime.Now;
+            }
+        }
+
         [Browsable(false)] public byte[] authorization_state { get; set; }
 
         /// <summary>
@@ -96,7 +106,7 @@ namespace XWare.ACME.Data
                     value.Save(ms);
                     authorization_state = ms.ToArray();
                 }
-                
+
             }
         }
 
